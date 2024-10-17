@@ -1,11 +1,45 @@
 topic: ~TeachMartialArts()
 language: enu
+# this is use case no.4
 
-# Defining extra concepts out of words or group of words
-concept:(hello) [hello hi hey "good morning" greetings]
+concept:(greetings) ^mode(joyful)(^rand[hello hi hey "good morning" greetings])
+concept:(approval) [yes yeah "Of course" sure]
+concept:(repetition) [repeat "try again"]
+
+u:(~greetings) ~greetings what is your name?
+    u1:(["I am" "My name is" ^empty] _name) Great $name ^goto(start)
+proposal: %start Now I will teach you the Martial Arts movements. Are you ready?
+    u1:(Yes) Great! ^wait ^nextProposal
+    u1:([No "Not yet"]) Tell me when you are ready
+        u2:(ready) ^goto(stretch)
+    u1:(~repetition *) ^wait Okay, I will ~repetition ^gotoReactivate
+proposal: %stretch Let's start with some stretching. ^run(Tai Chi Chuan)
+
+proposal:
+
+u:(what did you say before) I said $Dialog/Answered
+
+u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"]
+
+u:(e:Dialog/NotUnderstood) sorry, I didn't understand.
 
 # Catching inputs and triggering outputs
 u:(e:onStart) $onStopped=1
 
-# Replying to speech
-u:(~hello) ~hello
+
+
+#Variables: at least two variables to store needed values
+#Optional features:
+
+#Specify the speech mode, e.g., ^mode(contextual), and or tone, e.g., ~joyful
+#Use pauses 
+
+#Bonus:
+#Show different images on the robot tablet during the interaction
+#Listen to the event when the user is not speaking for 20s and let the robot say something (e.g., I didn't get your answer yet, OR are you still here?)
+#Submission Guidelines:
+#Submit the .top file OR the topic content as text
+#The topic should run properly on Pepper
+#Optional: create a GitHub repository containing the Choregraphe project and share the code with me.
+#Group submission (optional): 2 members (max 3).
+
