@@ -1,11 +1,57 @@
-topic: ~TeachMartialArts()
-language: enu
+topic: ~martial_arts_history_enu()
+language:enu
 
-# Defining extra concepts out of words or group of words
-concept:(hello) [hello hi hey "good morning" greetings]
+# Concepts
+concept: (origin master technique)
+concept: (china japan korea)
+concept: (temple street dojo)
 
-# Catching inputs and triggering outputs
-u:(e:onStart) $onStopped=1
+# Variables
+$topic = null
+$interest_level = 0
 
-# Replying to speech
-u:(~hello) ~hello
+# Proposals
+proposal: Start() What interests you most: origins, famous masters, or techniques?
+proposal: Explore() Where should we explore: a temple, street, or dojo?
+proposal: Question() Why do you think martial arts techniques were developed?
+
+# Initial greeting with random selection
+u: (start)
+    ^rand(Hello! Welcome to martial arts history.|Hi there! Ready to explore martial arts?|Greetings, martial arts enthusiast!)
+    ^nextProposal(Start)
+
+# Topic selection
+u: ([origin master technique])
+    $topic = '_0
+    Great choice! Let's learn about $topic.
+    ^nextProposal(Explore)
+
+# Exploration
+u: ([temple street dojo])
+    We're visiting a _0 in ancient times.
+    ^nextProposal(Question)
+
+# Question
+u: (QUESTION)
+    ^nextProposal(Question)
+
+u: (*)
+    Interesting thought! Many techniques were developed for various reasons.
+    $interest_level += 1
+
+# Conclusion
+u: (end)
+    We've learned about $topic. Your interest level is $interest_level.
+    How much did you enjoy our exploration, on a scale of 1-5?
+
+# User input
+u: (_~number)
+    Thanks for rating our exploration!
+
+# Fallback
+u: (*)
+    I'm not sure about that, but here's a fact about $topic.
+
+# Easter egg
+u: ([Potato])
+    Wow, you've unlocked a secret! Potatoes are dope!
