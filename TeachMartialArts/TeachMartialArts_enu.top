@@ -1,11 +1,35 @@
 topic: ~TeachMartialArts()
 language: enu
+# this is use case no.4
 
-# Defining extra concepts out of words or group of words
-concept:(hello) [hello hi hey "good morning" greetings]
+concept:(greetings) ^mode(joyful)(^rand[hello hi hey "good morning" greetings]) ^showImage(html/UC1.jpeg)
+concept:(approval) [yes yeah "Of course" sure]
+concept:(repetition) [repeat "try again"]
+
+u:(~greetings) ~greetings ! what is your name?
+    u1:({"I am" "My name is"} _name) ^mode(joyful) Nice to meet you, $name ^wait ^goto(start)
+    u1:(_name ^empty) Please provide your name to continue
+proposal: %start Now I will teach you some Martial Arts movements. Are you ready?
+    u1:(~approval) Great! ^wait ^nextProposal
+    u1:([No "Not yet"]) Tell me when you are ready
+        u2:(ready) ^goto(stretch)
+    u1:(~repetition) ^wait Okay, I will ~repetition ^previousProposal
+proposal: %stretch Let's start with some stretching.^showImage(html/UC4.jpeg) ^wait ^run(Tai Chi Chuan) 
+
+u:(next) Let's move to the following movement ^nextProposal
+
+proposal: Now let's start the starting stance
+proposal: Moving on to the movements
+proposal: Great job! Keep practicing these moves.
+proposal: how was the training?
+    u1:(_[great good]) Thank you for saying that it was $opinion $onStopped=1
+    u1:(_[fair mediocre bad]) I will do my best to improve $onStopped=1
+
+u:(what did you say before) I said $Dialog/Answered
+
+u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"]
+
+u:(e:Dialog/NotUnderstood) sorry, I didn't understand.
 
 # Catching inputs and triggering outputs
 u:(e:onStart) $onStopped=1
-
-# Replying to speech
-u:(~hello) ~hello
