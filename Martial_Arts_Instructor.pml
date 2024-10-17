@@ -13,6 +13,10 @@
     <Resources>
         <File name="" src=".gitattributes" />
         <File name="README" src="README.md" />
+        <File name="UC1" src="html/UC1.jpeg" />
+        <File name="UC2" src="html/UC2.jpeg" />
+        <File name="UC3" src="html/UC3.jpeg" />
+        <File name="UC4" src="html/UC4.jpeg" />
     </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="" language="" />
