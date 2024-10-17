@@ -1,11 +1,36 @@
 topic: ~InitiateInteraction()
 language: enu
 
-# Defining extra concepts out of words or group of words
-#concept:(hello) [hello hi hey "good morning" greetings]
+concept:(hello) [hello hi hey "good morning" greetings]
+concept:(martial_arts) ["martial arts" karate judo taekwondo]
+concept:(student_response) [yes no "tell me more" "I'm not sure"]
 
-# Catching inputs and triggering outputs
-#u:(e:onStart) $onStopped=1
+u:(e:onStart) $personGreeted=0 $interestedInClass=0 
+    ^show(image: welcome.jpg) Hello! I'm Pepper, the martial arts assistant. How can I help you today?
 
-# Replying to speech
-#u:(~hello) ~hello
+proposal: StartInteraction
+    $personGreeted=1
+    ^show(image: dojo.jpg) Are you here for the martial arts class?
+    u1:(~hello) Nice to meet you! Are you interested in our martial arts programs?
+        u2:(yes) $interestedInClass=1 Great! What would you like to know about our classes? ^goto(ClassInfo)
+        u2:(no) I see. Is there something else I can help you with?
+    u1:(yes) $interestedInClass=1 Excellent! ^goto(ClassInfo)
+    u1:(no) I understand. Is there anything else I can assist you with today?
+    u1:(_*) I'm not sure I understood. Could you please repeat that?
+
+proposal: ClassInfo
+    ^rand[
+        "Do you have any questions about our martial arts classes?"
+        "I can provide information about our training schedules if you're interested."
+        "Feel free to ask about the different martial arts styles we teach."
+    ]
+    u1:(what * [teach offer]) ^show(image: martial_arts_styles.jpg) We offer various martial arts styles including karate, judo, and taekwondo. Which one interests you the most?
+        u2:(_*) $preferredStyle=$1 ^show(image: $1.jpg) Thank you for your interest in $preferredStyle. Would you like to know more about the schedule?
+    u1:(how * [join enroll]) ^show(image: enrollment.jpg) To join our classes, you can sign up at the front desk. Would you like me to show you where it is?
+    u1:(schedule) ^show(image: class_schedule.jpg) Our classes run every weekday evening and Saturday mornings. What days work best for you?
+    u1:(_*) I'm not sure about that. Could you ask something about our classes, schedules, or enrollment process?
+
+proposal: EndInteraction
+    ^show(image: thank_you.jpg) If you have any more questions, feel free to ask. Otherwise, have a great day!
+
+u:(e:Dialog/NoOneSpeak20) ^show(image: are_you_there.jpg) Are you still there? Let me know if you need any information about our martial arts programs.
