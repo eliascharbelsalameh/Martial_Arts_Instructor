@@ -10,7 +10,10 @@
         <Dialog name="AssessUserSkillLevel" src="AssessUserSkillLevel/AssessUserSkillLevel.dlg" />
         <Dialog name="TellAStoryAboutMartialArts" src="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts.dlg" />
     </Dialogs>
-    <Resources />
+    <Resources>
+        <File name="" src=".gitattributes" />
+        <File name="README" src="README.md" />
+    </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />
         <Topic name="InitiateInteraction_enu" src="InitiateInteraction/InitiateInteraction_enu.top" topicName="InitiateInteraction" language="en_US" />
