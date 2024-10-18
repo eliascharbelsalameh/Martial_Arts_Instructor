@@ -17,9 +17,11 @@
         <File name="UC2" src="html/UC2.jpeg" />
         <File name="UC3" src="html/UC3.jpeg" />
         <File name="UC4" src="html/UC4.jpeg" />
+        <File name="swiftswords_ext" src="behavior_1/swiftswords_ext.mp3" />
+        <File name="taichimove" src="behavior_1/taichimove.pmt" />
     </Resources>
     <Topics>
-        <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="" language="" />
+        <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />
         <Topic name="InitiateInteraction_enu" src="InitiateInteraction/InitiateInteraction_enu.top" topicName="InitiateInteraction" language="en_US" />
         <Topic name="AssessUserSkillLevel_enu" src="AssessUserSkillLevel/AssessUserSkillLevel_enu.top" topicName="AssessUserSkillLevel" language="en_US" />
         <Topic name="TellAStoryAboutMartialArts_enu" src="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top" topicName="TellAStoryAboutMartialArts" language="en_US" />
