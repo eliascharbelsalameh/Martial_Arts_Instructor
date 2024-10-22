@@ -19,6 +19,8 @@
         <File name="UC4" src="html/UC4.jpeg" />
         <File name="swiftswords_ext" src="behavior_1/swiftswords_ext.mp3" />
         <File name="taichimove" src="behavior_1/taichimove.pmt" />
+        <File name="stance" src="html/stance.jpg" />
+        <File name="basic_movement" src="html/basic_movement.jpg" />
     </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />
