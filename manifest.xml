@@ -15,13 +15,13 @@
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
-  <dialogContent topicName="TeachMartialArts" typeVersion="1.0">
+  <dialogContent typeVersion="1.0" topicName="TeachMartialArts">
    <topic path="TeachMartialArts/TeachMartialArts_enu.top" language="en_US"/>
   </dialogContent>
-  <dialogContent topicName="InitiateInteraction" typeVersion="1.0">
+  <dialogContent typeVersion="1.0" topicName="InitiateInteraction">
    <topic path="InitiateInteraction/InitiateInteraction_enu.top" language="en_US"/>
   </dialogContent>
-  <dialogContent topicName="TellAStoryAboutMartialArts" typeVersion="1.0">
+  <dialogContent typeVersion="1.0" topicName="TellAStoryAboutMartialArts">
    <topic path="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top" language="en_US"/>
   </dialogContent>
  </contents>
