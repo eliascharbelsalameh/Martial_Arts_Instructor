@@ -1,0 +1,42 @@
+topic: ~TeachMartialArts()
+language: enu
+# this is use case no.4
+
+concept:(greetings) ^mode(joyful) [hello hi hey "good morning" greetings]
+concept:(approval) [yes yeah "Of course" sure]
+concept:(repetition) [repeat "try again"]
+concept:(names) [Elias Antonio Karl Asif]
+concept:(positiveFeedback) [good great insane fair]
+concept:(badFeedback) [bad mediocre annoying]
+
+u:(~greetings) %greeting ~greetings $showHi=1 ^wait(1) what is your name?
+    u1:({"I am" "My name is"} _~names) ^mode(joyful) Nice to meet you, $1 ^wait(3) ^goto(start)
+        $name=$1   
+    u1:(_name ^empty) Please provide your name to continue
+    u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(greeting) 
+proposal: %start Now I will teach you some Martial Arts movements. Are you ready?
+    u1:(~approval) Great! ^wait(5) ^gotoReactivate(stretch)
+    u1:([No "Not yet"]) Tell me when you are ready
+        u2:(ready) ^goto(stretch)
+    u1:(~repetition) ^wait(1) Okay, I will ~repetition ^gotoReactivate(start)
+    u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(start)
+proposal: %stretch Let's start with some stretching. $showMovement=1 ^wait(3) $stretch=1
+
+u:(next) ^nextProposal
+
+proposal: Now let's start the starting stance
+proposal: Moving on to the movements
+proposal: Great job $name! Keep practicing these moves.
+proposal: how was the training? $TaiChi=1 
+    u1:(_~positiveFeedback) Thank you for saying that it was $1 
+        $opinion=$1 ^wait(15) $onStopped=1
+    u1:(_~badFeedback) I am sorry that it was $1 I will do my best to improve 
+        $opinion=$1 ^wait(15) $onStopped=1
+u:(what did you say before) I said $Dialog/Answered
+
+u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"]
+
+#u:(e:Dialog/NotUnderstood) sorry, I didn't understand.
+
+# Catching inputs and triggering outputs
+# u:(e:onStart) $onStopped=1

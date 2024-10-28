@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="0.0.0" uuid="martial_arts_instructor-29f6b6">
+ <names>
+  <name lang="en_US">Untitled</name>
+ </names>
+ <supportedLanguages>
+  <language>en_US</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+  <dialogContent topicName="TeachMartialArts" typeVersion="1.0">
+   <topic language="en_US" path="TeachMartialArts/TeachMartialArts_enu.top"/>
+  </dialogContent>
+  <dialogContent topicName="InitiateInteraction" typeVersion="1.0">
+   <topic language="en_US" path="InitiateInteraction/InitiateInteraction_enu.top"/>
+  </dialogContent>
+  <dialogContent topicName="TellAStoryAboutMartialArts" typeVersion="1.0">
+   <topic language="en_US" path="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top"/>
+  </dialogContent>
+ </contents>
+</package>
