@@ -1,0 +1,40 @@
+topic: ~AssessUserSkillLevel()
+language: enu
+
+# Concepts
+concept:(greetings) ^rand[Hello "Hey there" Hi Salutations]
+concept:(yes) [yes "of course" "yeah" sure absolutely]
+concept:(no) [no nope "not really" never]
+concept:(experience_levels) [amateur intermediate afficionado expert]
+concept:(martial_arts) ["M M A" Karate Boxing "Kong Fu"]
+concept:(users) [Antonio Karl Elias Asif]
+
+# Greetings and Introduction
+u:(~greetings) ^goto(greet)
+
+proposal: %greet $showImage=pics/greet.jpg ~greetings fighter. what is your name?
+
+u:(_~users) $name=$1 ^goto(prompt)
+
+# Ask the user if they would like their skills assessed
+proposal: %prompt hello $name Would you like me to assess your martial arts skills now?
+    u1:(~no) $showImage=pics/sad.jpg That is unfortunate. Perhaps we could attmept the evaluation at some other time. $onStopped=1
+
+    u1:(~yes) $showImage=pics/happy.jpg Fantastic. Let us begin. ^goto(type)
+    
+# Enquiring the type of martial arts
+proposal: %type which martial art do you practice?
+u:(_~martial_arts) $type=$1 ^goto(exp)
+
+
+# Prompting the user for their experience level
+proposal: %exp $showImage=pics/xp.jpg what is your experience level in $type ?
+u:(_~experience_levels) $exp=$1 ^goto(summary)
+
+proposal: %summary $showImage=pics/aha.jpg to summarize, you practise $type and you are a $exp at it $onStopped=1
+
+# listening for an idling event of 20 seconds. If triggered,         revert to the current proposal and await the user's response
+u:(e:Dialog/NotSpeaking20) $showImage=pics/confused.jpg I did not receive your answer yet. ^sameProposal
+
+
+    
