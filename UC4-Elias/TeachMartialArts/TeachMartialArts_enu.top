@@ -16,6 +16,7 @@ concept:(badFeedback) [bad mediocre medium annoying]
 
 u:(~greetings) %greeting ~greetings $ImageUrl=pics/UC1.jpeg ^wait(1) ^goto(name)
 proposal:| %name what is your name?
+
     u1:({"I am" "My name is"} _~names) ^mode(joyful) Nice to meet you, $1 ^wait(3) ^goto(start)
         $name=$1   
     u1:(_name ^empty) Please provide your name to continue
@@ -43,3 +44,4 @@ u:(what did you say before) I said ^sameProposal ^wait(3)
 u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"] ^gotoReactivate(sameProposal)
 
 u:(e:Dialog/NotUnderstood) sorry, I didn't understand. ^gotoReactivate(sameProposal)
+
