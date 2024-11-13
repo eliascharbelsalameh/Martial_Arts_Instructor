@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Martial Arts History</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=1280, user-scalable=no" />
+		<link rel="stylesheet" href="css/w3.css" />
+		<link rel="stylesheet" type="text/css" href="css/formatting.css" />
+		<script src="js/qimessaging.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/index.js"></script>
+		<script type="application/javascript" src="js/fastclick.js"></script>
+		<script>
+			function getPage(pageName) {
+			    switch(pageName.toLowerCase()) {
+			        case "history":
+			            window.location = "pages/history.html";
+			            break;
+			        case "confirmation":
+			            window.location = "pages/confirmation.html";
+			            break;
+			        default:
+			            break;
+			    }
+			}
+
+			$(document).ready(function () {
+			    QiSession(function (session) {
+			        session.service("ALMemory").then(function (mem) {
+			            mem.raiseEvent("pageLoaded", "index");
+			        });
+			    });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="w3-content" style="max-width:1100px">
+			<div class="w3-row w3-padding-64">
+				<div class="w3-col m6 w3-padding-large w3-hide-small">
+					<img
+						src="pics/pepper-standing.png"
+						class="w3-round w3-image"
+						width="600"
+						height="750"
+					/>
+				</div>
+
+				<div class="w3-col m6 w3-padding-large">
+					<div class="w3-center">
+						<h1>Welcome to Martial Arts History</h1>
+						<p>Begin your journey of discovery</p>
+						<button onclick="getPage('history')" class="large-button w3-margin">
+							Start
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

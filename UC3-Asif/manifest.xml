@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="martial_arts_instructor-29f6b6" version="0.0.0">
-
+<package uuid="martial_arts_history" version="0.0.1">
  <names>
-  <name lang="en_US">Untitled</name>
+  <name lang="en_US">Martial Arts History</name>
  </names>
+ <descriptions>
+  <description lang="en_US">Pepper guides you through an interactive exploration of martial arts history, from ancient origins to modern techniques.</description>
+ </descriptions>
  <supportedLanguages>
   <language>en_US</language>
  </supportedLanguages>
@@ -11,24 +13,58 @@
   <language>en_US</language>
  </descriptionLanguages>
  <contents>
-  <behaviorContent path="behavior_1">
+  <behaviorContent path=".">
    <userRequestable/>
+   <nature>interactive</nature>
+   <names>
+    <name lang="en_US">Martial Arts History Explorer</name>
+   </names>
+   <descriptions>
+    <description lang="en_US">An interactive journey through martial arts history, exploring origins, masters, and techniques.</description>
+   </descriptions>
+   <tags>
+    <tag lang="en_US">history</tag>
+    <tag lang="en_US">martial arts</tag>
+    <tag lang="en_US">interactive</tag>
+    <tag lang="en_US">education</tag>
+   </tags>
+   <triggerSentences>
+    <sentence lang="en_US">tell me about martial arts</sentence>
+    <sentence lang="en_US">martial arts history</sentence>
+    <sentence lang="en_US">explore martial arts</sentence>
+    <sentence lang="en_US">teach me martial arts</sentence>
+    <sentence lang="en_US">martial arts origins</sentence>
+   </triggerSentences>
+   <loadingResponses>
+    <sentence lang="en_US">Let me share the fascinating world of martial arts with you!</sentence>
+    <sentence lang="en_US">I'm excited to teach you about martial arts history!</sentence>
+    <sentence lang="en_US">Get ready for an amazing journey through martial arts history!</sentence>
+   </loadingResponses>
+   <permissions>
+    <canStandUp/>
+    <canRunOnPod/>
+   </permissions>
+  </behaviorContent>
+
+  <!-- Animation behaviors -->
+  <behaviorContent path="animations/explain">
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
-  <dialogContent typeVersion="1.0" topicName="TeachMartialArts">
-   <topic language="en_US" path="TeachMartialArts/TeachMartialArts_enu.top"/>
-  </dialogContent>
-  <dialogContent typeVersion="1.0" topicName="InitiateInteraction">
-   <topic language="en_US" path="InitiateInteraction/InitiateInteraction_enu.top"/>
-  </dialogContent>
-  <dialogContent typeVersion="1.0" topicName="TellAStoryAboutMartialArts">
-<<<<<<<< HEAD:UC3-Asif/manifest.xml
-   <topic language="en_US" path="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top"/>
-========
-   <topic path="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top" language="en_US"/>
 
->>>>>>>> main:UC4-Elias/manifest.xml
-  </dialogContent>
+  <behaviorContent path="animations/thoughtful">
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+
+  <behaviorContent path="animations/welcome">
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
  </contents>
+
+ <requirements>
+  <naoqiRequirement minVersion="2.3"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
 </package>

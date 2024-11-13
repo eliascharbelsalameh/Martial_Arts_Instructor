@@ -1,0 +1,93 @@
+topic: ~MartialArtsHistory()
+language: enu
+include: lexicon_enu.top
+
+# Core concepts
+concept:(greetings) ^rand[hi hello "hey there" "greetings" "welcome"]
+concept:(path_choices) [origins masters techniques]
+concept:(interest_responses) [interesting fascinating "tell me more" "that's cool" amazing]
+concept:(disinterest) ["not interested" boring "too long" "skip this" "move on"]
+
+# Path-specific choices
+concept:(origin_choices) [shaolin warfare meditation "spiritual practice"]
+concept:(master_choices) [ancient modern legendary "current masters"]
+concept:(technique_choices) [defense sport traditional competitive]
+
+# Timeline transitions
+concept:(time_periods) ["ancient times" "modern era" "traditional period" "current day"]
+concept:(story_transitions) ["and then" "moving forward" "next" "after that" "following this"]
+
+# Initial greeting and path selection
+proposal: %start ^mode(joyful)
+    $currentPage=welcome
+    ~greetings! I'm excited to share the fascinating history of martial arts with you!
+    $pageHeading=Welcome to Martial Arts History
+    $pageText=Which aspect would you like to explore?
+    $pageImage=welcome.jpg
+    What interests you most: the ancient origins, legendary masters, or fighting techniques?
+
+    u1:(~path_choices) $chosen_path=$1 ^gotoReactivate(path_$1)
+    u1:(e:pathSelected) ^gotoReactivate(path_$PathChoice)
+    u1:(e:Dialog/NotSpeaking10) Would you like to hear about where martial arts began? ^sameProposal
+
+# Origins path
+proposal: %path_origins ^mode(contextual)
+    $currentPage=origins
+    $pageHeading=Origins of Martial Arts
+    $pageText=Explore the ancient beginnings
+    $pageImage=ancient_temple.jpg
+    The origins of martial arts are deeply rooted in ancient traditions. Would you like to learn about the Shaolin Temple, ancient warfare techniques, or meditation practices?
+
+    u1:(~origin_choices) $sub_path=$1 ^gotoReactivate(origin_$1)
+    u1:(e:subPathSelected) ^gotoReactivate(origin_$SubChoice)
+    u1:(~disinterest) ^gotoReactivate(check_interest)
+
+# Masters path
+proposal: %path_masters ^mode(contextual)
+    $currentPage=masters
+    $pageHeading=Legendary Masters
+    $pageText=Discover the great teachers
+    $pageImage=masters.jpg
+    The great masters shaped martial arts through generations. Would you like to explore ancient masters or modern legends?
+
+    u1:(~master_choices) $sub_path=$1 ^gotoReactivate(master_$1)
+    u1:(e:subPathSelected) ^gotoReactivate(master_$SubChoice)
+    u1:(~disinterest) ^gotoReactivate(check_interest)
+
+# Techniques path
+proposal: %path_techniques ^mode(contextual)
+    $currentPage=techniques
+    $pageHeading=Fighting Techniques
+    $pageText=Learn about combat styles
+    $pageImage=techniques.jpg
+    Martial arts techniques evolved from survival needs to spiritual practices. Would you like to explore self-defense or competitive techniques?
+
+    u1:(~technique_choices) $sub_path=$1 ^gotoReactivate(technique_$1)
+    u1:(e:subPathSelected) ^gotoReactivate(technique_$SubChoice)
+    u1:(~disinterest) ^gotoReactivate(check_interest)
+
+# Interest check
+proposal: %check_interest
+    I notice you might prefer something different. Would you like to try some actual movements instead?
+    u1:(~yes) Great! Let's move on to some basic movements. $transition_to_practice=1 $onStopped=1
+    u1:(~no) Let me try a different approach. ^gotoReactivate(start)
+
+# Continue/end check
+proposal: %continuation_check
+    $pageHeading=Continue Exploration?
+    $pageText=Would you like to explore more aspects of martial arts history?
+    Would you like to explore another aspect of martial arts history?
+    u1:(~yes) ^gotoReactivate(start)
+    u1:(~no) Thank you for exploring martial arts history with me! $onStopped=1
+
+# Event handlers
+u:(e:yesAnswer) ^gotoReactivate(start)
+u:(e:noAnswer) Thank you for your interest in martial arts! $onStopped=1
+
+# Interest tracking
+u:(~interest_responses) $interest_level=$interest_level+1 I'm glad you find this interesting! ^gotoReactivate(sameProposal)
+u:(~disinterest) ^gotoReactivate(check_interest)
+
+# Error recovery
+u:(e:Dialog/NotSpeaking20) Are you still with me? ^gotoReactivate(sameProposal)
+u:(e:Dialog/NotUnderstood) I didn't catch that. Could you please repeat? ^gotoReactivate(sameProposal)
