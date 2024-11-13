@@ -6,22 +6,11 @@
     </BehaviorDescriptions>
     <Dialogs>
         <Dialog name="TeachMartialArts" src="TeachMartialArts/TeachMartialArts.dlg" />
-        <Dialog name="InitiateInteraction" src="InitiateInteraction/InitiateInteraction.dlg" />
-        <Dialog name="AssessUserSkillLevel" src="AssessUserSkillLevel/AssessUserSkillLevel.dlg" />
-        <Dialog name="TellAStoryAboutMartialArts" src="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts.dlg" />
+        <Dialog name="all_concepts" src="all_concepts/all_concepts.dlg" />
     </Dialogs>
     <Resources>
-        <File name="" src=".gitattributes" />
-        <File name="README" src="README.md" />
-
         <File name="swiftswords_ext" src="behavior_1/swiftswords_ext.mp3" />
         <File name="taichimove" src="behavior_1/taichimove.pmt" />
-        <File name="UC1" src="html/pics/UC1.jpeg" />
-        <File name="UC2" src="html/pics/UC2.jpeg" />
-        <File name="UC3" src="html/pics/UC3.jpeg" />
-        <File name="UC4" src="html/pics/UC4.jpeg" />
-        <File name="basic_movement" src="html/pics/basic_movement.jpg" />
-        <File name="stance" src="html/pics/stance.jpg" />
         <File name="all" src="html/css/all.css" />
         <File name="formatting" src="html/css/formatting.css" />
         <File name="home" src="html/css/home.css" />
@@ -42,9 +31,15 @@
         <File name="displaytext" src="html/pages/displaytext.html" />
         <File name="getinput" src="html/pages/getinput.html" />
         <File name="help" src="html/pages/help.html" />
+        <File name="UC1" src="html/pics/UC1.jpeg" />
+        <File name="UC2" src="html/pics/UC2.jpeg" />
+        <File name="UC3" src="html/pics/UC3.jpeg" />
+        <File name="UC4" src="html/pics/UC4.jpeg" />
+        <File name="basic_movement" src="html/pics/basic_movement.jpg" />
         <File name="blank" src="html/pics/blank.jpg" />
         <File name="pepper-question" src="html/pics/pepper-question.png" />
         <File name="pepper-standing" src="html/pics/pepper-standing.png" />
+        <File name="stance" src="html/pics/stance.jpg" />
         <File name="welcome" src="html/pics/welcome.jpg" />
         <File name="fa-brands-400" src="html/webfonts/fa-brands-400.eot" />
         <File name="fa-brands-400" src="html/webfonts/fa-brands-400.svg" />
@@ -61,14 +56,22 @@
         <File name="fa-solid-900" src="html/webfonts/fa-solid-900.ttf" />
         <File name="fa-solid-900" src="html/webfonts/fa-solid-900.woff" />
         <File name="fa-solid-900" src="html/webfonts/fa-solid-900.woff2" />
-
-
+        <File name="README" src="README.md" />
+        <File name="display_content" src="html/pages/display_content.html" />
+        <File name="block_position1" src="html/pics/block_position1.png" />
+        <File name="body_punch" src="html/vids/body_punch.mp4" />
+        <File name="lower_block" src="html/vids/lower_block.mp4" />
+        <File name="side_block" src="html/vids/side_block.mp4" />
+        <File name="upper_block" src="html/vids/upper_block.mp4" />
+        <File name="next_repeat" src="html/pages/next_repeat.html" />
     </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />
-        <Topic name="InitiateInteraction_enu" src="InitiateInteraction/InitiateInteraction_enu.top" topicName="InitiateInteraction" language="en_US" />
+        <Topic name="confirmation_enu" src="confirmation/confirmation_enu.top" topicName="confirmation" language="en_US" />
         <Topic name="AssessUserSkillLevel_enu" src="AssessUserSkillLevel/AssessUserSkillLevel_enu.top" topicName="AssessUserSkillLevel" language="en_US" />
+        <Topic name="InitiateInteraction_enu" src="InitiateInteraction/InitiateInteraction_enu.top" topicName="InitiateInteraction" language="en_US" />
         <Topic name="TellAStoryAboutMartialArts_enu" src="TellAStoryAboutMartialArts/TellAStoryAboutMartialArts_enu.top" topicName="TellAStoryAboutMartialArts" language="en_US" />
+        <Topic name="all_concepts_enu" src="all_concepts/all_concepts_enu.top" topicName="all_concepts" language="en_US" />
     </Topics>
     <IgnoredPaths />
     <Translations auto-fill="en_US">

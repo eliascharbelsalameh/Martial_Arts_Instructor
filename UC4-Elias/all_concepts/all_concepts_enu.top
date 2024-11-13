@@ -1,0 +1,9 @@
+topic: ~all_concepts()
+language: enu
+
+concept:(greetings) [hello hi hey "good morning" greetings]
+concept:(approval) [yes yeah "Of course" sure]
+concept:(repetition) [repeat "try again"]
+concept:(names) [Elias Antonio Karl Asif]
+concept:(positiveFeedback) [good great insane fair]
+concept:(badFeedback) [bad mediocre medium annoying]

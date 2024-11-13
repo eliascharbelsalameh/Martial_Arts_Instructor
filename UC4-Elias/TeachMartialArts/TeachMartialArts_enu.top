@@ -1,47 +1,65 @@
 topic: ~TeachMartialArts()
 language: enu
+include: all_concepts_enu.top
 # this is use case no.4
 
-# TODO: add a webview
 # TODO: add the video on the display
 # TODO: add the image recognition process
-# TODO: add the feddback section
+# TODO: add the feedback section
 
-concept:(greetings) ^mode(joyful) [hello hi hey "good morning" greetings]
-concept:(approval) [yes yeah "Of course" sure]
-concept:(repetition) [repeat "try again"]
-concept:(names) [Elias Antonio Karl Asif]
-concept:(positiveFeedback) [good great insane fair]
-concept:(badFeedback) [bad mediocre medium annoying]
+proposal: %yesProposal Let's learn some moves ^goto(stretch)
+proposal: %noProposal Okay $noOutput=1
 
-u:(~greetings) %greeting ~greetings $ImageUrl=pics/UC1.jpeg ^wait(1) ^goto(name)
-proposal:| %name what is your name?
-
-    u1:({"I am" "My name is"} _~names) ^mode(joyful) Nice to meet you, $1 ^wait(3) ^goto(start)
-        $name=$1   
-    u1:(_name ^empty) Please provide your name to continue
-    u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(greeting) 
-proposal: %start Now I will teach you some Martial Arts movements. Are you ready?
-    u1:(~approval) Great! ^wait(5) ^gotoReactivate(stretch)
-    u1:([No "Not yet"]) Tell me when you are ready
-        u2:(ready) ^goto(stretch)
-    u1:(~repetition) ^wait(1) Okay, I will ~repetition ^gotoReactivate(start)
-    u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(start)
-proposal: %stretch Let's start with some stretching. Press next when you complete this stage $ImageUrl=pics/UC4.jpeg ^wait(3) $stretch=1
-
+u:(e:onStart) Hey $ImageUrl="pics/pepper-standing.png" ^goto(start)
 u:(next) ^nextProposal
 
-proposal: $ImageUrl=pics/stance.jpg Now let's start the starting stance. ^wait(3) Press next when you complete this stage
-proposal: $ImageUrl=pics/basic_movement.jpg Moving on to the movements. ^wait(3) Press next when you complete this stage
-proposal: Great job $name! Keep practicing these moves. ^wait(3) Press next when you complete this stage
-proposal: how was the training? # add here a webview for feedback
+proposal: %start Now I will teach you some Martial Arts movements. Are you ready? $dispReady=1
+    u1:([~approval e:yesAnswer]) Great! ^goto(yesProposal)
+    #u1:([No e:noAnswer]) do you want to stop?
+    #    u2:([~approval]) that is unfortunate ^goto(noProposal)
+    #    u2:([no "not yet"]) Tell me when you are ready
+    #        u3:(ready) Okay let us go ^goto(yesProposal)
+    u1:([no "not yet"]) Oh ^goto(noProposal)
+    u1:(~repetition) Okay, I will ~repetition ^gotoReactivate(start)
+    #u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(start)
+
+#u:(next e:nextAnswer) ^nextProposal
+
+proposal: %stretch Let's start with some stretching. Press next when you complete this stage $ImageUrl=pics/UC4.jpeg ^wait(3000) $stretch=1 ^goto(side_block)
+
+proposal: %side_block Now let's start the side blocking stance.
+            $data="vids/side_block.mp4"
+            ^wait(15000) Press next when you complete this stage
+    u1:([next e:nextAnswer]) ^goto(upper_block)
+    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(side_block)
+
+proposal: %upper_block Moving on to the upper block.
+            $data="vids/upper_block.mp4"
+    ^wait(15000) Press next when you complete this stage
+    u1:([next e:nextAnswer]) ^goto(lower_block)
+    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(upper_block)
+
+proposal: %lower_block Great job ! let's try the lower block. 
+            $data="vids/lower_block.mp4"
+    ^wait(10000) Press next when you complete this stage
+    u1:([next e:nextAnswer]) ^goto(body_punch)
+    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(lower_block)
+
+proposal: %body_punch The last move is the body punch.
+            $data="vids/body_punch.mp4"
+            ^wait(10000) Press next when you complete this stage
+    u1:([next e:nextAnswer]) ^goto(feedback) $ImageUrl="pics/UC4.jpeg"
+    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(body_punch)
+
+proposal: %feedback how was the training? # add here a webview for feedback
     u1:(_~positiveFeedback) Thank you for saying that it was $1 
-        $opinion=$1 ^wait(5)  $TaiChi=1 $onStopped=1
+        $opinion=$1 ^wait(5000) $TaiChi=1
     u1:(_~badFeedback) I am sorry that it was $1 . I will do my best to improve 
-        $opinion=$1 ^wait(5) $TaiChi=1 $onStopped=1
-u:(what did you say before) I said ^sameProposal ^wait(3) 
+        $opinion=$1 ^wait(5000) $TaiChi=1
 
-u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"] ^gotoReactivate(sameProposal)
+u:(~repetition) I said ^gotoReactivate(sameProposal) ^wait(1000) 
 
-u:(e:Dialog/NotUnderstood) sorry, I didn't understand. ^gotoReactivate(sameProposal)
+#u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"] ^gotoReactivate(sameProposal)
+
+#u:(e:Dialog/NotUnderstood) sorry, I didn't understand. ^gotoReactivate(sameProposal)
 
