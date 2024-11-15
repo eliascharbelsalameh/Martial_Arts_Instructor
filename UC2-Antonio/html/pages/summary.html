@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interact with Pepper</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../css/formatting.css" />
+    <link rel="stylesheet" href="../css/all.css" />
+
+    <script src="/libs/qi/2/qi.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/qievents.js"></script>
+    <script src="../js/displayinfo.js"></script>
+
+    <style>
+      /* General Reset */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      /* Layout Container */
+      .container {
+        max-width: 710px;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 8px 16px;
+        display: inline-block;
+      }
+
+      .navbar a:hover {
+        background-color: #575757;
+        border-radius: 5px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 20px 10px;
+        margin-top: 30px;
+        font-size: 14px;
+      }
+
+      footer a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        footer p {
+          font-size: 12px;
+        }
+      }
+
+      /* Amazing Section Styling */
+      .amazing-section {
+        margin-top: 50px;
+      }
+
+      .amazing-section h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #4caf50;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div
+        class="w3-bar w3-white w3-padding w3-card"
+        style="letter-spacing: 4px"
+      >
+        <!-- a href="../index.html" class="w3-bar-item w3-button">WELCOME</a -->
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="../index.html" class="w3-bar-item w3-button">HOME</a>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="w3-content" style="max-width: 1100px">
+      <!-- Tip Section -->
+      <div class="w3-row w3-padding-64" id="riddle">
+        <div class="w3-col w3-padding-large w3-full">
+          <div id="informationSection" class="w3-center">
+            <hr />
+            <h1
+              id="pageHeading"
+              style="font-size: 45px; padding-top: 50px"
+            ></h1>
+            <hr />
+            <h3 id="pageText"></h3>
+          </div>
+          <hr />
+          <div class="w3-center">
+            <h1>Amazing!</h1>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-32">
+      <p>
+        Powered by
+        <a
+          href="https://www.softbankrobotics.com/emea/en"
+          title="PEPPER"
+          target="_blank"
+          class="w3-hover-text-green"
+          >PEPPER</a
+        >
+      </p>
+    </footer>
+  </body>
+  <script type="text/javascript">
+    displayPageInformation();
+  </script>
+</html>

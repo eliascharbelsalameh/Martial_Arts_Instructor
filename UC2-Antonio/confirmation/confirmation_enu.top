@@ -1,0 +1,21 @@
+topic: ~confirmation()
+language: enu
+include: lexicon_enu.top
+
+proposal: %yesProposal ~joyful Hurray! you selected yes $yesOutput=1 I am glad that you liked the interaction $onStopped=1 
+proposal: %noProposal ~neutral You selected no $noOutput=1 Too bad that you did not like the interaction $onStopped=1
+
+u:(~yes) ^gotoReactivate(yesProposal)
+u:(~no) ^gotoReactivate(noProposal)
+
+u:(e:yesAnswer) ^gotoReactivate(yesProposal)
+u:(e:noAnswer) ^gotoReactivate(noProposal)
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello

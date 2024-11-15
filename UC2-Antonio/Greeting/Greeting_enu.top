@@ -1,0 +1,21 @@
+topic: ~Greeting()
+language: enu
+
+include:Concepts_enu.top
+
+#Greet the user on the start event
+# Greetings and Introduction
+
+u:(e:onStart) ^goto(introduction)
+ 
+proposal: %introduction ~greetings fighter! \pau=1000\ My name is Pepper the Sensei. \pau=1000\ my objective is to assist you in your Karate journey. \pau=1000\ are you ready to tread this path?
+
+    u1:(~yes) ^mode(joyful) great! let us begin. ^goto(greet)
+    u1:(~no) I understand. Have yourself a nice day and farewell!  $greetingStopped=1
+    
+proposal: %greet ^mode(neutral) What is your name, honorable fighter?
+
+u:(_~users) $name=$1 ^goto(acquaintance) 
+
+proposal: %acquaintance pleased to meet you, $name . $onStopped=1  
+

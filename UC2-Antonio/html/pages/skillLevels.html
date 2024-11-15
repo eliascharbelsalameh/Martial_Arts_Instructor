@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interact with Pepper</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/w3.css">
+        <link rel="stylesheet" type="text/css" href="../css/formatting.css">
+        <link rel="stylesheet" href="../css/all.css">
+
+        <script src="/libs/qi/2/qi.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/qievents.js"></script>
+        <script src="../js/displayinfo.js"></script>
+
+        <style>
+            /* General Reset */
+            body,
+            html {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: Arial, sans-serif;
+              text-align: center;
+            }
+      
+            /* Layout Container */
+            .container {
+              max-width: 710px;
+              margin: 0 auto;
+              padding: 10px;
+            }
+      
+            /* Navbar */
+            .navbar {
+              background-color: #333;
+              color: white;
+              padding: 10px 0;
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+            }
+      
+            .navbar a {
+              color: white;
+              text-decoration: none;
+              font-size: 18px;
+              padding: 8px 16px;
+              display: inline-block;
+            }
+      
+            .navbar a:hover {
+              background-color: #575757;
+              border-radius: 5px;
+            }
+      
+            /* Buttons */
+            .buttons {
+              margin-top: 20px;
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: wrap;
+              gap: 10px;
+            }
+      
+            .buttons button {
+              background-color: #dddddd;
+              color: black;
+              border: none;
+              border-radius: 5px;
+              padding: 12px 20px;
+              flex: 1;
+              max-width: 200px; /* Increased max-width to accommodate longer text */
+              cursor: pointer;
+              font-size: 18px;
+              font-weight: bold;
+              transition: transform 0.5s ease, background-color 0.5s ease,
+                color 0.5s ease;
+              white-space: normal; /* Allow text to wrap within the button */
+              text-align: center; /* Center the text within the button */
+            }
+      
+            .buttons button:active {
+              background-color: #4caf50;
+              color: white;
+              transform: translateY(2px) scale(0.9);
+              transition: none;
+            }
+      
+            /* Footer */
+            footer {
+              background-color: #333;
+              color: white;
+              padding: 20px 10px;
+              margin-top: 30px;
+              font-size: 14px;
+            }
+      
+            footer a {
+              color: #4caf50;
+              text-decoration: none;
+            }
+      
+            footer a:hover {
+              text-decoration: underline;
+            }
+      
+            /* Responsive Design */
+            @media (max-width: 600px) {
+              .buttons button {
+                font-size: 16px;
+                padding: 10px 16px;
+              }
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navbar -->
+        <div class="">
+            <div style="letter-spacing:4px;">
+                <div >
+                    <a href="../index.html" >HOME</a>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div style="max-width:1100px">
+            <!-- Tip Section -->
+            <div id="riddle">
+                <div >
+                    <div id="informationSection" >
+                        <hr />
+                        <h1 id="pageHeading" style="font-size: 45px;padding-top:50px"></h1>
+                        <hr />
+                        <h3 id="pageText"></h3>
+                    </div>
+                    <hr />
+                    <div >
+                        <!-- Smaller Buttons -->
+                        <button type="button" id="amateurButton" onclick="raiseConfirmationEvent('amateur')" style="font-size:24px; padding: 10px 20px; width: 200px;">
+                            <span >Amateur</span><br>
+                        </button>
+                        <button type="button" id="intermediateButton" onclick="raiseConfirmationEvent('intermediate')" style="font-size:24px; padding: 10px 20px; width: 200px;">
+                            <span >Intermediate</span><br>
+                        </button>
+                        <button type="button" id="afficionadoButton" onclick="raiseConfirmationEvent('afficionado')" style="font-size:24px; padding: 10px 20px; width: 200px;">
+                            <span >Afficionado</span><br>
+                        </button>
+                        <button type="button" id="expertButton" onclick="raiseConfirmationEvent('expert')" style="font-size:24px; padding: 10px 20px; width: 200px;">
+                            <span >Expert</span><br>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <!-- Footer -->
+        <footer >
+            <p>Powered by <a href="https://www.softbankrobotics.com/emea/en" title="PEPPER" target="_blank" >PEPPER</a></p>
+        </footer>
+    </body>
+    <script type="text/javascript">
+        displayPageInformation();
+    </script>
+</html>

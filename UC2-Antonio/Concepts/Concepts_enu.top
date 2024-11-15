@@ -1,0 +1,12 @@
+topic: ~Concepts()
+language: enu
+
+#This box contains a list of all the concepts that could be used throughout the QiChat dialogue procedure
+
+# Concepts
+concept:(greetings) ^rand[Hello "Hey there" Hi Salutations]
+concept:(yes) [yes "of course" "yeah" sure absolutely]
+concept:(no) [no nope "not really" never]
+concept:(experience_levels) [amateur intermediate afficionado expert]
+concept:(users) [Antonio Karl Elias Asif]
+#concept:(martial_arts) ["M M A" Karate Boxing "Kong Fu"]

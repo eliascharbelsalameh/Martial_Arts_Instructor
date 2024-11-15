@@ -1,0 +1,37 @@
+topic: ~AssessSkillLevel()
+language: enu
+
+include:Concepts_enu.top
+
+u:(e:onStart) ^goto(prompt)
+# Ask the user if they would like their skills assessed
+proposal: %prompt hello $name Would you like me to assess your Karate skills now?
+    u1:([~no e:noAnswer]) $noImage=1 That is unfortunate. Perhaps we could attmept the evaluation at some other time. $onStopped=1
+
+    u1:([~yes e:yesAnswer]) $yesOutput=1 Fantastic. Let us begin. ^goto(exp) 
+    
+# Enquiring the type of martial arts
+#proposal: %type which martial art do you practice?
+#u:(_~martial_arts) $type=$1 ^goto(exp)
+
+
+# Prompting the user for their experience level
+proposal: %exp $skillOut=1 what is your experience level in Karate ?
+
+u:(_[~experience_levels]) $exp=$1 ^goto(summary)
+
+u:(e:amateur) $exp=amateur ^goto(summary)
+
+u:(e:intermediate) $exp=intermediate ^goto(summary)
+
+u:(e:afficionado) $exp=afficionado ^goto(summary)
+
+u:(e:expert) $exp=expert ^goto(summary)
+
+proposal: %summary $summaryReady=1 to summarize, you practise karate and you are an $exp at it $onStopped=1
+
+# listening for an idling event of 20 seconds. If triggered, revert to the current proposal and await the user's response
+u:(e:Dialog/NotSpeaking20) I did not receive your answer yet. ^sameProposal
+
+
+    

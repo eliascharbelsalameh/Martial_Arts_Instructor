@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interact with Pepper</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/w3.css">
+        <link rel="stylesheet" type="text/css" href="../css/formatting.css">
+        <link rel="stylesheet" href="../css/all.css">
+
+        <script src="/libs/qi/2/qi.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/qievents.js"></script>
+        <script src="../js/displayinfo.js"></script>
+        <style>
+            /* General Reset */
+            body,
+            html {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: Arial, sans-serif;
+              text-align: center;
+            }
+      
+            /* Layout Container */
+            .container {
+              max-width: 710px;
+              margin: 0 auto;
+              padding: 10px;
+            }
+      
+            /* Navbar */
+            .navbar {
+              background-color: #333;
+              color: white;
+              padding: 10px 0;
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+            }
+      
+            .navbar a {
+              color: white;
+              text-decoration: none;
+              font-size: 18px;
+              padding: 8px 16px;
+              display: inline-block;
+            }
+      
+            .navbar a:hover {
+              background-color: #575757;
+              border-radius: 5px;
+            }
+      
+            /* Buttons */
+            .button-container {
+              display: flex;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 30px;
+            }
+      
+            button {
+              font-size: 20px;
+              padding: 15px 25px;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              font-weight: bold;
+              transition: transform 0.1s, background-color 0.3s, color 0.3s,
+                box-shadow 0.3s;
+            }
+      
+            button:active {
+              transform: scale(0.95) translateY(3px);
+              background-color: #4caf50;
+              color: white;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+      
+            #noButton {
+              background-color: #dddddd;
+              color: black;
+            }
+      
+            #yesButton {
+              background-color: #dddddd;
+              color: black;
+            }
+      
+            /* Footer */
+            footer {
+              background-color: #333;
+              color: white;
+              padding: 20px 10px;
+              margin-top: 30px;
+              font-size: 14px;
+            }
+      
+            footer a {
+              color: #4caf50;
+              text-decoration: none;
+            }
+      
+            footer a:hover {
+              text-decoration: underline;
+            }
+      
+            /* Responsive Design */
+            @media (max-width: 600px) {
+              footer p {
+                font-size: 12px;
+              }
+            }
+      
+            /* Content Section */
+            .content h1 {
+              font-size: 28px;
+              margin: 30px 0;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navbar -->
+        <div>
+            <div style="letter-spacing:4px;">
+                <!-- a href="../index.html" class="w3-bar-item w3-button">WELCOME</a -->
+                <!-- Right-sided navbar links. Hide them on small screens -->
+                <div>
+                    <a href="../index.html">HOME</a>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div style="max-width:1100px">
+            <!-- Tip Section -->
+            <div id="riddle">
+                
+
+                <div>
+                    <!-- h1 class="w3-center" style="font-size: 45px;font-weight: bold;padding-top:50px;">Good Day!</h1><br -->
+                    <div id="informationSection">
+                    <!--
+                        <h1 id="question" style="font-size: 45px;padding-top:50px">
+                            What is your name?</span><br>
+                        </h1>
+                    -->
+                        <hr />
+                        <h1 id="pageHeading" style="font-size: 45px;padding-top:50px"></h1>
+                        <hr />
+                        <h3 id="pageText"></h3>
+                    </div>
+                    <hr />
+                    <div>
+                        <button type="button" id="noButton" onclick="raiseConfirmationEvent('noAnswer')" class="fa rate-button rounded-rect-btn brown-btn" style="font-size:40px;margin-right: 50pt;">
+                            <span class="fa-times"></span><br>
+                            <span class="default-font">No</span>
+                        </button>
+                        <button type="button" id="yesButton" onclick="raiseConfirmationEvent('yesAnswer')" class="fa rate-button rounded-rect-btn green-btn" style="font-size:40px;">
+                            <span class="default-font">Yes</span><br>
+                            <span class="fa-check"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <!-- Footer -->
+        <footer>
+            <p>Powered by <a href="https://www.softbankrobotics.com/emea/en" title="PEPPER" target="_blank" class="w3-hover-text-green">PEPPER</a></p>
+        </footer>
+    </body>
+    <script type="text/javascript">
+        displayPageInformation();
+    </script>
+</html>
