@@ -7,3 +7,6 @@ We focus on the Karate Martial Art in this project.
 - Antonio Haddad
 - Karl Romanos Abou Jaoudeh
 - Elias-Charbel Salameh
+
+### Notes
+please visit each each branch to checkout the project and its attached README file for the youtube video and more Details
