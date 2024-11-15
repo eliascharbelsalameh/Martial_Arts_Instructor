@@ -1,11 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="martial_arts_history" version="0.0.1">
+<package version="0.0.0" uuid="ex05_tabletwebpage">
  <names>
-  <name lang="en_US">Martial Arts History</name>
+  <name lang="en_US">EX05 - Tablet APP</name>
  </names>
- <descriptions>
-  <description lang="en_US">Pepper guides you through an interactive exploration of martial arts history, from ancient origins to modern techniques.</description>
- </descriptions>
  <supportedLanguages>
   <language>en_US</language>
  </supportedLanguages>
@@ -16,55 +13,15 @@
   <behaviorContent path=".">
    <userRequestable/>
    <nature>interactive</nature>
-   <names>
-    <name lang="en_US">Martial Arts History Explorer</name>
-   </names>
-   <descriptions>
-    <description lang="en_US">An interactive journey through martial arts history, exploring origins, masters, and techniques.</description>
-   </descriptions>
-   <tags>
-    <tag lang="en_US">history</tag>
-    <tag lang="en_US">martial arts</tag>
-    <tag lang="en_US">interactive</tag>
-    <tag lang="en_US">education</tag>
-   </tags>
-   <triggerSentences>
-    <sentence lang="en_US">tell me about martial arts</sentence>
-    <sentence lang="en_US">martial arts history</sentence>
-    <sentence lang="en_US">explore martial arts</sentence>
-    <sentence lang="en_US">teach me martial arts</sentence>
-    <sentence lang="en_US">martial arts origins</sentence>
-   </triggerSentences>
-   <loadingResponses>
-    <sentence lang="en_US">Let me share the fascinating world of martial arts with you!</sentence>
-    <sentence lang="en_US">I'm excited to teach you about martial arts history!</sentence>
-    <sentence lang="en_US">Get ready for an amazing journey through martial arts history!</sentence>
-   </loadingResponses>
-   <permissions>
-    <canStandUp/>
-    <canRunOnPod/>
-   </permissions>
+   <permissions/>
   </behaviorContent>
-
-  <!-- Animation behaviors -->
-  <behaviorContent path="animations/explain">
+  <behaviorContent path="applause">
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
-
-  <behaviorContent path="animations/thoughtful">
-   <nature>interactive</nature>
-   <permissions/>
-  </behaviorContent>
-
-  <behaviorContent path="animations/welcome">
+  <behaviorContent path="song">
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
  </contents>
-
- <requirements>
-  <naoqiRequirement minVersion="2.3"/>
-  <robotRequirement model="JULIETTE"/>
- </requirements>
 </package>

@@ -1,0 +1,99 @@
+topic: ~intro()
+language: enu
+include: lexicon_enu.top
+
+# Basic responses
+concept:(yes) [yes yeah sure okay alright "lets go" "go ahead" "I want to" absolutely]
+concept:(no) [no nah nope "not now" "maybe later" "I dont want to"]
+concept:(next) [next continue "go on" proceed "tell me more" "what next" "and then"]
+concept:(dontknow) ["I dont know" "not sure" "no idea" uncertain "you tell me"]
+concept:(interest) ["thats interesting" fascinating amazing wow "tell me more" "so cool"]
+concept:(disinterest) ["too long" boring "not interesting" "skip this" "move on"]
+
+# Speech styles and pauses
+concept:(speak_slow) \RSPD=85\
+concept:(speak_normal) \RSPD=100\
+concept:(long_pause) \pau=1000\
+concept:(short_pause) \pau=400\
+concept:(medium_pause) \pau=700\
+
+# Story transitions
+concept:(storytelling) [
+    ^rand["let me tell you about" "I will share with you" "allow me to explain about"]
+    ~long_pause
+]
+
+concept:(excitement) [
+    ^rand["this is fascinating" "here is something amazing" "you will love this part"]
+    ~short_pause
+]
+
+u:(e:onStart) ^nextProposal
+
+proposal: ~speak_slow Welcome to an incredible journey through time as we explore the rich history of martial arts ~speak_normal ^nextProposal
+
+proposal: $showImage=sensei-pepper.jpeg
+    ~storytelling Today we will discover the origins special techniques and legendary masters of martial arts ~long_pause Are you ready to begin this journey
+    u1:(~yes) ~joyful Excellent ~short_pause Let us start from the very beginning ^nextProposal
+    u1:(~no) ~neutral I understand ~short_pause Perhaps we can explore another time $onStopped=1
+
+proposal: $showImage=ancient-origins.jpg
+    ~excitement The story of martial arts begins over 5000 years ago in ancient civilizations ~medium_pause Would you like to hear about India or China first
+    u1:(india) ~joyful Ah yes ~short_pause The art of Kalaripayattu from India is considered one of the oldest martial arts ^nextProposal
+    u1:(china) ~joyful Excellent choice ~short_pause Chinese martial arts have a rich history dating back to the Yellow Emperor ^nextProposal
+
+proposal: $showImage=shaolin-temple.jpg
+    ~storytelling The legendary Shaolin Temple became a crucial center for martial arts development ~medium_pause Let me show you how monks trained
+    u1:(~yes) ^start(animations/explain) The monks combined meditation with combat training creating powerful techniques ^wait(animations/explain) ^nextProposal
+    u1:(~no) Let us move on to another fascinating part of history ^nextProposal
+
+proposal: $showImage=warrior-monks.jpg
+    Many believe Shaolin monks only practiced for spiritual reasons ~medium_pause What do you think they also trained for
+    u1:([defense fighting protection combat]) ~joyful Correct ~short_pause They needed to defend their temple from bandits ^nextProposal
+    u1:([peace meditation spiritual]) Those were important too but they also needed combat skills for protection ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=silk-road.jpg
+    ~excitement As traders traveled the Silk Road martial arts spread across Asia ~medium_pause Different styles developed in each region
+    u1:(~interest) Each region adapted techniques to their needs creating unique styles ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=animal-styles.jpg
+    The masters observed nature to create fighting techniques ~medium_pause Can you guess which animals inspired them
+    u1:([tiger lion crane snake monkey dragon]) ~joyful Exactly ~short_pause These animals movements became the foundation of many styles ^nextProposal
+    u1:(~dontknow) The tiger crane snake monkey and dragon all inspired different techniques ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=masters-training.jpg
+    ~storytelling Great masters would train for decades to perfect their art ~medium_pause Some focused on internal energy others on external power
+    u1:([internal "inner power" chi]) The cultivation of chi or internal energy was crucial in many styles ^nextProposal
+    u1:([external physical power]) Physical power and technique were indeed very important ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=weapons-training.jpg
+    ~excitement Masters also learned to use many weapons ~medium_pause Each weapon required different skills
+    u1:(what weapons) The staff sword spear and many others ~short_pause Each had its own form and technique ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=modern-evolution.jpg
+    Today martial arts continue to evolve ~medium_pause Modern styles combine traditional wisdom with new approaches
+    u1:(~interest) The evolution never stops ~short_pause Each generation adds their own understanding ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=global-practice.jpg
+    ~storytelling Martial arts are now practiced worldwide ~medium_pause Not just for fighting but for many reasons
+    u1:([what reasons "tell me why" why]) Health discipline self defense sport and personal growth ^nextProposal
+    u1:(~next) ^nextProposal
+
+proposal: $showImage=final-reflection.jpg
+    You have learned about the incredible journey of martial arts through history ~medium_pause Would you like to try some basic movements yourself
+    u1:(~yes) ~joyful Wonderful ~short_pause Let us begin with some fundamental stances $transition_to_practice=1 $onStopped=1
+    u1:(~no) ~neutral Thank you for exploring martial arts history with me $onStopped=1
+
+# Error handling and engagement
+#u:(e:Dialog/NotSpeaking20) Are you still here with me ^gotoReactivate(sameProposal)
+#u:(e:Dialog/NotUnderstood) Please share your thoughts again ^gotoReactivate(sameProposal)
+
+# Interest tracking
+u:(~interest) $interest_level=$interest_level+1 Your interest makes this journey even better ^gotoReactivate(sameProposal)
+u:(~disinterest) Would you prefer to move to the practice section instead ^gotoReactivate(check_interest)

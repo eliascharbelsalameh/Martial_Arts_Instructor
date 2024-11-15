@@ -1,0 +1,14 @@
+topic: ~confirmation()
+language: enu
+include: lexicon_enu.top
+
+# Proposals for different responses
+proposal: %YesProposal ~joyful Excellent Let us explore the fascinating world of martial arts history $yesAnswer=1
+proposal: %NoProposal ~neutral I understand Perhaps we can explore martial arts history another time $noAnswer=1
+
+# Initial question
+u:(e:onStart)  \pau=400\ \RSPD=85\ Would you like to learn about the history of martial arts It is a fascinating journey through time \RSPD=100\
+
+# Handle responses
+    u1:([~yes e:yesAnswer]) ^gotoReactivate(YesProposal)
+    u1:([~no e:noAnswer]) ^gotoReactivate(NoProposal)
