@@ -64,6 +64,8 @@
         <File name="side_block" src="html/vids/side_block.mp4" />
         <File name="upper_block" src="html/vids/upper_block.mp4" />
         <File name="next_repeat" src="html/pages/next_repeat.html" />
+        <File name="sensei_pepper" src="html/pics/sensei_pepper.jpeg" />
+        <File name="sensei_pepper_1" src="html/pics/sensei_pepper_1.jpeg" />
     </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />

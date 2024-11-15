@@ -1,17 +1,16 @@
 topic: ~TeachMartialArts()
 language: enu
 include: all_concepts_enu.top
-# this is use case no.4
 
-# TODO: add the video on the display
 # TODO: add the image recognition process
 # TODO: add the feedback section
 
-proposal: %yesProposal Let's learn some moves ^goto(stretch)
+proposal: %yesProposal  ^goto(stretch)
 proposal: %noProposal Okay $noOutput=1
 
-u:(e:onStart) Hey $ImageUrl="pics/pepper-standing.png" ^goto(start)
+u:(e:onStart) Okay $ImageUrl=pics/sensei_pepper.jpeg ^goto(start)
 u:(next) ^nextProposal
+u:(~repetition) I said ^gotoReactivate(sameProposal) ^wait(5000) 
 
 proposal: %start Now I will teach you some Martial Arts movements. Are you ready? $dispReady=1
     u1:([~approval e:yesAnswer]) Great! ^goto(yesProposal)
@@ -21,45 +20,38 @@ proposal: %start Now I will teach you some Martial Arts movements. Are you ready
     #        u3:(ready) Okay let us go ^goto(yesProposal)
     u1:([no "not yet"]) Oh ^goto(noProposal)
     u1:(~repetition) Okay, I will ~repetition ^gotoReactivate(start)
-    #u1:(e:Dialog/NotSpeaking5) ^gotoReactivate(start)
+    u1:(e:Dialog/NotSpeaking20) ^gotoReactivate(start)
 
 #u:(next e:nextAnswer) ^nextProposal
 
-proposal: %stretch Let's start with some stretching. Press next when you complete this stage $ImageUrl=pics/UC4.jpeg ^wait(3000) $stretch=1 ^goto(side_block)
+proposal: %stretch Let's start with some stretching. $ImageUrl=pics/sensei_pepper.jpeg ^wait(3000) $stretch=1 ^goto(side_block)
 
-proposal: %side_block Now let's start the side blocking stance.
-            $data="vids/side_block.mp4"
-            ^wait(15000) Press next when you complete this stage
+proposal: %side_block Now let's start the side blocking stance. ^mode(joyful) Cover your ribs at all costs
+            $data="vids/side_block.mp4"  
+            ^wait(15000) 
     u1:([next e:nextAnswer]) ^goto(upper_block)
     u1:([~repetition e:repeatAnswer]) ^gotoReactivate(side_block)
 
-proposal: %upper_block Moving on to the upper block.
+proposal: %upper_block Moving on to the upper block. This block protects your head from direct hits
             $data="vids/upper_block.mp4"
-    ^wait(15000) Press next when you complete this stage
+    ^wait(15000)
     u1:([next e:nextAnswer]) ^goto(lower_block)
     u1:([~repetition e:repeatAnswer]) ^gotoReactivate(upper_block)
 
 proposal: %lower_block Great job ! let's try the lower block. 
             $data="vids/lower_block.mp4"
-    ^wait(10000) Press next when you complete this stage
+    ^wait(10000) 
     u1:([next e:nextAnswer]) ^goto(body_punch)
     u1:([~repetition e:repeatAnswer]) ^gotoReactivate(lower_block)
 
-proposal: %body_punch The last move is the body punch.
+proposal: %body_punch Let's move to the offensive. The last move is the body punch.
             $data="vids/body_punch.mp4"
-            ^wait(10000) Press next when you complete this stage
-    u1:([next e:nextAnswer]) ^goto(feedback) $ImageUrl="pics/UC4.jpeg"
+            ^wait(10000)
+    u1:([next e:nextAnswer]) ^goto(feedback) 
     u1:([~repetition e:repeatAnswer]) ^gotoReactivate(body_punch)
 
-proposal: %feedback how was the training? # add here a webview for feedback
+proposal: %feedback $ImageUrl=pics/sensei_pepper.jpeg how was the training? 
     u1:(_~positiveFeedback) Thank you for saying that it was $1 
-        $opinion=$1 ^wait(5000) $TaiChi=1
+        $opinion=$1 ^wait(10000) $TaiChi=1
     u1:(_~badFeedback) I am sorry that it was $1 . I will do my best to improve 
-        $opinion=$1 ^wait(5000) $TaiChi=1
-
-u:(~repetition) I said ^gotoReactivate(sameProposal) ^wait(1000) 
-
-#u:(e:Dialog/NotSpeaking20) ^rand["Are you still here?" "I didn't get your answer yet"] ^gotoReactivate(sameProposal)
-
-#u:(e:Dialog/NotUnderstood) sorry, I didn't understand. ^gotoReactivate(sameProposal)
-
+        $opinion=$1 ^wait(10000) $TaiChi=1
