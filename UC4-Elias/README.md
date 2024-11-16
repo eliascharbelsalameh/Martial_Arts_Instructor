@@ -1,6 +1,8 @@
 # Chosen Use Case
 *Use case 4:* Teach Martials Arts
-    by Elias-Charbel Salameh, 202201047
+by:
+- Elias-Charbel Salameh
+- Asif Alam
 
 # Use Case Sheet Link
 https://docs.google.com/document/d/1RoC2xBnca8dxl6QCc_aPNVIENoT7jmKq/edit
