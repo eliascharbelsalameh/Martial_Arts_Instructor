@@ -1,7 +1,7 @@
 topic: ~TeachMartialArts()
 language: enu
 include: all_concepts_enu.top
-
+# e:goodOut
 # TODO: add the image recognition process
 # TODO: add the feedback section
 
@@ -10,7 +10,7 @@ proposal: %noProposal Okay $noOutput=1
 
 u:(e:onStart) Okay $ImageUrl=pics/sensei_pepper.jpeg ^goto(start)
 u:(next) ^nextProposal
-u:(~repetition) I said ^gotoReactivate(sameProposal) ^wait(5000) 
+u:(~repetition) I said ^gotoReactivate(sameProposal) \pau=5000\
 
 proposal: %start Now I will teach you some Martial Arts movements. Are you ready? $dispReady=1
     u1:([~approval e:yesAnswer]) Great! ^goto(yesProposal)
@@ -24,34 +24,36 @@ proposal: %start Now I will teach you some Martial Arts movements. Are you ready
 
 #u:(next e:nextAnswer) ^nextProposal
 
-proposal: %stretch Let's start with some stretching. $ImageUrl=pics/sensei_pepper.jpeg ^wait(3000) $stretch=1 ^goto(side_block)
+proposal: %stretch Let's start with some stretching. $ImageUrl=pics/sensei_pepper.jpeg $stretch=1 \pau=7000\ ^goto(side_block)
 
 proposal: %side_block Now let's start the side blocking stance. ^mode(joyful) Cover your ribs at all costs
             $data="vids/side_block.mp4"  
-            ^wait(15000) 
-    u1:([next e:nextAnswer]) ^goto(upper_block)
-    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(side_block)
+            \pau=10000\ $takePic=1 
+    u1:(e:goodOut) Good work! ^goto(upper_block)
+    u1:(e:badOut) This is not the right position repeat ^gotoReactivate(side_block)
+    #u1:([next e:nextAnswer]) ^goto(upper_block)
+    #u1:([~repetition e:repeatAnswer]) ^gotoReactivate(side_block)
 
 proposal: %upper_block Moving on to the upper block. This block protects your head from direct hits
             $data="vids/upper_block.mp4"
-    ^wait(15000)
-    u1:([next e:nextAnswer]) ^goto(lower_block)
-    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(upper_block)
+    \pau=10000\ $takePic=1 
+    u1:(e:goodOut) Good work! ^goto(lower_block)
+    u1:(e:badOut) This is not the right position repeat ^gotoReactivate(upper_block)
 
 proposal: %lower_block Great job ! let's try the lower block. 
             $data="vids/lower_block.mp4"
-    ^wait(10000) 
-    u1:([next e:nextAnswer]) ^goto(body_punch)
-    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(lower_block)
+            \pau=10000\ $takePic=1 
+    u1:(e:goodOut) Good work! ^goto(body_punch)
+    u1:(e:badOut) This is not the right position repeat ^gotoReactivate(lower_block)
 
 proposal: %body_punch Let's move to the offensive. The last move is the body punch.
             $data="vids/body_punch.mp4"
-            ^wait(10000)
-    u1:([next e:nextAnswer]) ^goto(feedback) 
-    u1:([~repetition e:repeatAnswer]) ^gotoReactivate(body_punch)
+            \pau=10000\ $takePic=1 
+    u1:(e:goodOut) Good work! ^goto(feedback)
+    u1:(e:badOut) This is not the right position repeat ^gotoReactivate(body_punch)
 
 proposal: %feedback $ImageUrl=pics/sensei_pepper.jpeg how was the training? 
     u1:(_~positiveFeedback) Thank you for saying that it was $1 
-        $opinion=$1 ^wait(10000) $TaiChi=1
+        $opinion=$1 $TaiChi=1
     u1:(_~badFeedback) I am sorry that it was $1 . I will do my best to improve 
-        $opinion=$1 ^wait(10000) $TaiChi=1
+        $opinion=$1 $TaiChi=1

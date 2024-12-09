@@ -66,6 +66,10 @@
         <File name="next_repeat" src="html/pages/next_repeat.html" />
         <File name="sensei_pepper" src="html/pics/sensei_pepper.jpeg" />
         <File name="sensei_pepper_1" src="html/pics/sensei_pepper_1.jpeg" />
+        <File name="output_image" src="html/pics/output_image.jpg" />
+        <File name="camera1" src="behavior_1/camera1.ogg" />
+        <File name="tmp" src="html/pics/uploads/tmp.txt" />
+        <File name="response" src="html/pics/uploads/response.txt" />
     </Resources>
     <Topics>
         <Topic name="TeachMartialArts_enu" src="TeachMartialArts/TeachMartialArts_enu.top" topicName="TeachMartialArts" language="en_US" />
